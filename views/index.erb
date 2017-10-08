@@ -1,0 +1,26 @@
+<h1>All images</h1>
+
+<ul>
+  <% for @image in @images %>
+    <li>
+      <figure>
+        <img src="<%= @image.file %>" alt="<% @image.title %>">
+        <figcaption><%= @image.title %></figcaption>
+      </figure>
+    </li>
+  <% end %>
+</ul>
+
+<h1>Upload a new image</h1>
+
+<form method="post" action="/images" enctype="multipart/form-data">
+  <p>
+    <input type="file" name="image[file]" id="file">
+  </p>
+  <p>
+    <input type="text" name="image[title]" id="title" placeholder="Enter a title for the image">
+  </p>
+  <p>
+    <input type="submit" value="Upload!">
+  </p>
+</form>
