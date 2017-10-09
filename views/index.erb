@@ -11,12 +11,22 @@
   <% end %>
 </div>
 
-<h1>Upload a new image</h1>
+<% unless @auth %>
+  <p>
+    <a class="button button-primary" href="/auth">Auth</a>
+  </p>
+<% end %>
 
-<form method="post" action="/images" enctype="multipart/form-data">
-    <label for="file">File</label>
-    <input class="u-full-width" type="file" name="image[file]" id="file">
-    <label for="title">Title</label>
-    <input class="u-full-width" type="text" name="image[title]" id="title" placeholder="Enter a title for the image">
-    <input class="button-primary" type="submit">
-</form>
+<% if @auth %>
+
+  <h1>Upload a new image</h1>
+
+  <form method="post" action="/images" enctype="multipart/form-data">
+      <label for="file">File</label>
+      <input class="u-full-width" type="file" name="image[file]" id="file">
+      <label for="title">Title</label>
+      <input class="u-full-width" type="text" name="image[title]" id="title" placeholder="Enter a title for the image">
+      <input class="button-primary" type="submit">
+  </form>
+
+<% end %>
